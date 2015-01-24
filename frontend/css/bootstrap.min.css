@@ -23,10 +23,10 @@ div#centro{
 	height: 331px;
 	background: url(../imagem/centro.png) no-repeat;
 	position: absolute;
-	top: 492px;
-	left: 685px;
+	top: 491px;
+	left: 729px;
 	margin-top: -350px;
-	margin-left: -180px;
+	margin-left: -350px;
 }
 div#centroform{
 	width: 350px;
@@ -44,7 +44,7 @@ div#rodape{
 	top: 512px;
 	left: 702px;
 	margin-top: -800x;
-	margin-left: -90px;
+	margin-left: -230px;
 }
 p {font: italic 75%/125% "Comic Sans MS", cursive;}
 
