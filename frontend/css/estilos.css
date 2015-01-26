@@ -1,0 +1,104 @@
+@charset "utf-8";
+.alertageral {
+}
+* {
+	margin:0;
+	padding:0;
+}
+div#conteudo_principal{
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}
+
+div#banner{
+	width: 1200px;
+	height: 102px;
+	background: url(../imagem/banner.png) no-repeat;
+	float: left;
+	position: absolute;
+}
+
+
+div#centro{
+	width: 705px;
+	height: 331px;
+	background: url(../imagem/centro.png) no-repeat;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -350px;
+	margin-left: -270px;
+}
+
+div#corpo {
+		position:relative;
+		top: 7px;
+		left: 47px;
+}
+
+div#imagem_alertas1 {
+		position:relative;
+		top: 10px;
+		left: 59px;
+}
+
+div#tabtable {
+		position:relative;
+		top: 2px;
+		left: 204px;
+}
+
+div#container {
+		position:relative;
+		top: -18px;
+		left: 0px;
+}
+
+div#imagem_alertas2 {
+		position:relative;
+		left: 276px;
+}
+
+div#comentarios {
+		position:relative;
+		left: 90px;
+}
+
+div#texto {
+		position:relative;
+		left: 247px;
+}
+
+
+div#bordas{
+	position:relative;
+	width:300px;
+	height:50px;
+	left: center;
+	background-color:#DBF7F5;
+	border-radius: 40px 40px 40px 40px;
+	valign:middle;
+	
+}
+
+
+@font-face {
+    font-family: 'digital_dreamregular';
+    src: url('../font/DIGITALDREAM-webfont.eot');
+    src: url('../font/DIGITALDREAM-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/DIGITALDREAM-webfont.woff') format('woff'),
+         url('../font/DIGITALDREAM-webfont.ttf') format('truetype'),
+         url('../font/DIGITALDREAM-webfont.svg#digital_dreamregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h6{
+    font-family: 'digital_dreamregular';
+   }
+
+
+
+   
