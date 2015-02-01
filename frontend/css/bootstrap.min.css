@@ -106,15 +106,7 @@ div#rodape{
 	margin-top: -800x;
 	margin-left: -230px;
 }
-div#rodapealerta{
-	width: 500px;
-	height: 170px;
-	position: absolute;
-	top: 512px;
-	left: 702px;
-	margin-top: -850x;
-	margin-left: -650px;
-}
+p {font: italic 75%/125% "Comic Sans MS", cursive;}
 
 /*!
  * Bootstrap v2.2.2
