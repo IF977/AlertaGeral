@@ -1,0 +1,52 @@
+.tmask {
+	background:#000;
+	display:none;
+	height:100%;
+	left:0px;
+	opacity: 0.5;
+	position:absolute;
+	top:0px;
+	width:100%;
+	z-index: 3;
+}
+.tbox {
+	display: none;
+	position: absolute;
+	z-index: 3;
+}
+.tinner {
+	background: url(images/preload.gif) no-repeat 50% 50% #fff;
+	border-radius: 3px;
+	max-height: 500px;
+	overflow: auto;
+	padding: 2%;
+}
+.tclose {
+	background:url(images/close.png) no-repeat;
+	cursor:pointer;
+	float: right;
+	height:30px;
+	position: absolute;
+	right: -2%;
+	top: -2%;
+	width: 30px;
+}
+.tclose a {
+	display: block;
+	height: 30px;
+	text-indent: -9000px;
+	width: 30px;
+}
+.tclose:hover {
+	background-position:0 -30px;
+}
+#loading-tinybox {
+	background: url(/static/djtools/tinybox/images/loading.gif) no-repeat center center #000;
+	height:100%;
+	left:0px;
+	opacity: 0.5;
+	position:absolute;
+	top:0px;
+	width:100%;
+	z-index: 6;
+}

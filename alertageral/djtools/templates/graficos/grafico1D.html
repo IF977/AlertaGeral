@@ -1,0 +1,74 @@
+		<!-- 1. Add these JavaScript inclusions in the head of your page -->
+		<script type="text/javascript" src="/static/djtools/highcharts/highcharts.js"></script>
+
+		
+		<!-- 1a) Optional: the exporting module -->
+		<script type="text/javascript" src="/static/djtools/highcharts/exporting.js"></script>
+		
+		
+		<!-- 2. Add the JavaScript to initialize the chart on document ready -->
+		<script type="text/javascript">
+		
+			var chart;
+			$(document).ready(function() {
+				chart = new Highcharts.Chart({
+					chart: {
+						renderTo: '{{ g.titulo }}1D'
+					},
+					title: {
+						text: '{{ g.titulo }}'
+					},
+					subtitle: {
+						text: '{{ g.subtitulo }}'
+					},
+					plotArea: {
+						shadow: null,
+						borderWidth: null,
+						backgroundColor: null
+					},
+					tooltip: {
+						formatter: function() {
+							return '{{ g.formatacao_tooltip|safe }}';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								formatter: function() {
+									if (this.y > 5) return this.point.name;
+								},
+								color: 'white',
+								style: {
+									font: '13px Trebuchet MS, Verdana, sans-serif'
+								}
+							}
+						}
+					},
+					legend: {
+						layout: '{{ g.orientacao_legenda }}',
+						style: {
+							left: '{{ g.legenda_x }} px',
+							top: '{{ g.lengeda_y }} px'
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share', {{ g.extra_attrs|safe }}
+						data: [
+						{% for dado in g.dados %}
+							['{{ dado.0 }}',       {{ dado.1 }}],
+						{% endfor %}
+						]
+					}]
+				});
+			});
+				
+		</script>
+		
+		<!-- 3. Add the container -->
+		<div id="{{ g.titulo }}1D" style="width: {{ g.comprimento }}px; height: {{ g.altura }}px, margin:auto"></div>
+
+		

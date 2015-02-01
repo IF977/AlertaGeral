@@ -1,0 +1,19 @@
+{# Template criado para que list_filter seja renderizado como um <select>, não como um <ul><li><a> #}
+<div class="filter">
+    <label>Filtrar por {{ title }}:</label>
+    <select 
+       onchange="url=location.href; location.href = ((url.indexOf('?') != -1) ? $(this).val() : (url + $(this).val()))">
+    {% for choice in choices %}    
+        <option  
+            {% if choice.selected %} 
+                selected="selected" 
+                {% if not forloop.first %}
+                    class="filled" 
+                {% endif %} 
+            {% endif %} 
+            value="{{ choice.query_string|iriencode }}">
+                {{ choice.display }}
+        </option>
+    {% endfor %}
+    </select>
+</div>
