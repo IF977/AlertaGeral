@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <!--
+    <![endif]
+    -->
+<head>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"></meta>
+    <meta charset="utf-8"></meta>
+    <meta content="" name="description"></meta>
+    <meta content="" name="author"></meta>
+    <title> E-bolsa </title>
+    
+    <link media="screen" type="text/css" href="/static/css/style.css" rel="stylesheet"></link>
+    <link type="text/css" href="/static/css/nivo-slider.css" rel="stylesheet"></link>
+    <link type="text/css" href="/static/css/jquery.fancybox-1.3.4.css" rel="stylesheet"></link>
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+   <script>
+    window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')
+    </script>
+</head>
+<div id="header-wrap">
+    <header>
+        <hgroup>
+            <h1>
+                <a href="http://belojardim.ifpe.edu.br/"></a>
+            </h1>
+        </hgroup>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="/principal/admin">Administração</a>
+                </li>
+                <li>
+                    <a href="/admin/logout/?next=/principal/admin/">Encerrar Sessão</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% if perms.operacao.add_pagamento %}
+    <nav id="menu">
+        <ul></a>
+            <li><a>Relatórios</a>
+                <ul>
+                      <li><a href="/operacao/relatorio_programa/">Programa</a></li>
+                      <li><a href="#">Executado</a></li>
+                      <li><a href="#">Gestão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+    <body>
+        <br>
+        <br>
+        <br>
+    {% if perms.operacao.add_pagamento %}
+        <div class="content-wrap">
+					<a href="/admin/operacao/aluno/"><img src="/static/media/icone_aluno.png" title="Gerenciar Alunos"/></a>
+					<a href="/operacao/pagamento/"><img src="/static/media/icone_pagamento.png" title="Gerenciar Pagamentos"/></a>
+					<a href="/admin/operacao/programa/"><img src="/static/media/icone_programa.png" title="Gerenciar Programas"/></a>
+					<a href="/admin/operacao/banco/"><img src="/static/media/icone_banco.png" title="Gerenciar Bancos"/></a>
+        </div>
+    {% endif %}
+    {% if perms.cardapio.add_refeicao %}
+        
+    {% endif %}
+        <div class="content-wrap">
+					<a href="/admin/"><img src="/static/media/icone_geral.png" title="Geral"/></a>
+        </div>
+
+    </body>
+</div>
+<footer>
+    <a>© 2014 CGTI - Coordenação de Gestão de Tecnologia da Informação</a>
+</footer>

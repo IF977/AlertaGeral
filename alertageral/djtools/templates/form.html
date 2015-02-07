@@ -1,0 +1,24 @@
+
+{% comment %}É o template default renderizado pelo templatetag render_form{% endcomment %}
+
+{% if render_full %}
+	{% if form.errors %}
+		<p class="errornote">Por favor corrija os erros abaixo</p>
+	{% endif %}
+	<form action="{{ form.ACTION }}" name="{{ form.ID }}" id="{{ form.ID }}"
+		  method="{{ form.METHOD|default:"POST" }}"  
+	      {% if form.is_multipart %} enctype="multipart/form-data" {% endif %}>
+	    {% csrf_token %}
+	    {{ form.rendered }}
+	    <div class="submit-row">
+			<input type="submit" class="default"
+				{% if form.SUBMIT_LABEL %}value="{{ form.SUBMIT_LABEL }}"{% endif %}
+			/>
+			{% for eb in form.EXTRA_BUTTONS %}
+			 <input type="submit" name="{{ eb.name }}" value="{{ eb.value }}" />
+			{% endfor %}
+		</div>
+	</form>
+{% else %}
+	{{ form.rendered }}
+{% endif %}
