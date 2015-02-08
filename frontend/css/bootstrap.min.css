@@ -106,7 +106,15 @@ div#rodape{
 	margin-top: -800x;
 	margin-left: -230px;
 }
-p {font: italic 75%/125% "Comic Sans MS", cursive;}
+div#rodape2{
+	width: 500px;
+	height: 170px;
+	position: absolute;
+	top: 450px;
+	left: 270px;
+	margin-top: -600x;
+	margin-left: -230px;
+}
 
 /*!
  * Bootstrap v2.2.2
