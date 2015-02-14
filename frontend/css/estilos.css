@@ -44,7 +44,7 @@ div#imagem_alertas1 {
 }
 
 div#tabtable {
-	position: absolute;
+	position: relative;
 	top: 2px;
 	left: 204px;
 }
