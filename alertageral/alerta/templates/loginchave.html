@@ -1,0 +1,48 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sistema Alerta Geral</title>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body bgcolor="#dfeae2">
+<div id="conteudo_principal">
+<div id="banner"> </div>
+  <br>
+    <div id="centro">
+    <br><br>
+        <br>
+        <br>
+        <br>
+        <div id="centroform">
+        {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
+            <p class="centro">
+                {% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+            </p>
+        {% endif %}
+    {% if erro %}
+        <h5><font face="Arial, Helvetica, sans-serif" color=red>{{ erro }} Caracteres Maiusculos e Minusculos Fazem diferença caso o erro
+		persista entre em contato com a administração do site ou departamento.</font></h5>
+    {% endif %}
+            <form action="/alerta/validar_responder_alerta/{{alerta.id}}" method="post" id="validar_responder_alerta_form">{% csrf_token %}
+                    <br>
+                    <br>
+                    <span class="add-on"><i class="icon-qrcode"></i></span>
+                    <input class="span2" name="chave" id="id_chave" type="password" placeholder="Chave de acesso">
+                    <input type="hidden" name="this_is_the_login_form" value="1" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                <div align="center">
+                <button class="btn btn-danger" type="submit">   Confirmar   </button>
+                </div>
+
+            </form>
+            <script type="text/javascript">
+                document.getElementById('id_username').focus();
+            </script>
+
+    </div>
+    
+</body>
+</html>

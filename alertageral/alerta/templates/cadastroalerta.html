@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sistema Alerta Geral</title>
+<!--<link href="css/estilos.css" rel="stylesheet" type="text/css" />-->
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body bgcolor="#dfeae2">
+<div id="conteudo_principal">
+
+<div id="banner"><a href=/> </a><div align="right">
+<a href="/">
+<button class="btn btn-link" type="button">Inicio</button>
+</a><a href="/logout/">
+<button class="btn btn-link" type="button">Logout</button>
+</a><a href="/alerta/recupera_senha/">
+<button class="btn btn-link" type="button">Alterar Senha</button>
+</a><a href="/admin/">
+<button class="btn btn-link" type="button">Administração</button>
+</a></div> </div>
+  <div id="centro">
+  <div id="centroform">
+    <br />
+    <div class="control-group">
+    <div class="controls">
+    <div class="input-prepend">
+    </div>
+    </div>
+    </div>
+    <div class="control-group">
+    <div class="controls">
+    <div class="input-prepend">
+<form action="/alerta/cadastrar_alerta/" name="cadastrar_alerta" id="cadastrar_alerta_form" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <span class="add-on"><i class="icon-list-alt"></i></span    >
+        <select name="assunto">
+            {% for a in assuntos %}
+                <option value="{{ a.id }}">{{ a.nome }}</option>
+            {% endfor%}
+        </select>
+    <br>
+    <br>
+   <TEXTAREA NAME="comentario" COLS=45 ROWS=3 style="width:237px; height:50px;"></TEXTAREA>
+   <br>
+    {{ form }}
+<!--     <span class="add-on"><i class="icon-camera"></i>Fotos ou Vídeos</span>
+   <br />
+   <input id="id_imagem" type="file" name="imagem"> -->
+   <br />
+   <br />
+    <a href="cadastrar_alerta">
+    <button class="btn btn-danger" type="submit"> Enviar    Alerta </button>
+    </a>
+	<br>
+	<br>
+<label><b>Marcar como anônima</b></label>
+<input type="checkbox" name="anonimo" value="anonimo"> </input>
+</form>
+    </div>
+    </div>
+    </div>
+  </div> 
+  </div> 
+  <div id="rodape2">
+  <br />
+  <br />
+  <div id="tabtable">
+			<div class="tabbable" id="tabs-362792">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#panel-582106" data-toggle="tab" style="font-family:digital_dreamregular"><h6>Meus Alertas</h6></a>
+					</li>
+<!-- 					<li>
+						<a href=cadastroalerta_com.html style=font-family: 'digital_dreamregular'><h6>Meus Comentários</h6></a>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+	
+<div class="container" style="background-color:#FFF" id=container>
+
+	<div class="row clearfix" >
+		
+		
+		<!-- Todos Alertas -->
+		<br clear="all"/>
+            {% for a in alertas %}
+            <div id="imagem_alertas1">
+                <table>
+				<tr>
+					<td><img alt="{{ a.imagem }}" width=120  height=120 {% ifequal a.imagem "" %}
+                    src="/media/imagem/imagemAlerta.png" 
+                    {% else %}
+                    src="/media/{{ a.imagem }}"
+                    {% endifequal %}class="img-circle" ></td>
+                    <!-- <td><img alt="{{ a.imagem }}" width=120 height=120 src="/media/{{ a.imagem }}" class="img-circle" ></td> -->
+					<td width=500 align="right"><blockquote><font color="#FF0000">Desativar</font>
+						<div class="well well-small"   style="color:black">
+							<p>
+								<a href=/alerta/comentarios/{{ a.id }} style="color:black">{{ a.texto }}</a>
+							</p> 
+							<small>
+                                {{ a.data_criacao }}
+								<br>
+								
+								{% if a.anonimo == True %}
+								    Anônimo
+								{% else %}
+									{{ a.usuario.username }}
+								{% endif %}
+								
+							</small>
+						</div>
+						</blockquote></td>     
+				</tr>
+                </table>
+            </div>	
+            {% endfor %}
+		
+	</div>
+    <br>
+    <br>
+    <br>
+</div>
+</div>
+</div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script><script src="js/bootstrap.min.js"></script>
+</body>
+</html>

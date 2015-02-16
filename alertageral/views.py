@@ -11,10 +11,5 @@ from alerta.models import *
 
 
 def index(request):
-    # hoje = datetime.datetime.now()
-    # imagens = Imagem.objects.all()
-    # noticias = Noticia.objects.all().order_by('-id')
-    # imagem_lista = []
-    # for i in imagens:
-        # imagem_lista.append(i.imagem)
+    alertas = Alerta.objects.filter(ativo=True).order_by('-id')[:12]
     return django.shortcuts.render(request, 'index.html',locals())

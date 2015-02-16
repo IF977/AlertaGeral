@@ -11,6 +11,9 @@
 <div id="banner"> </div>
   <div id="centro">
   <div id="centroform">
+  {% if mensagem %}
+	<font color=red>{{ mensagem }}</font>
+  {% endif %}
 <form action="/alerta/cadastro/" name="cadastro" id="cadastro_form" method="POST">
     {% csrf_token %}
     <br/>
@@ -34,6 +37,13 @@
     <br>
     <span class="add-on"><i class="icon-lock"></i></span>
     <input class="span2" name="senha" id="inputIcon" type="password" placeholder="Senha">
+    <br>
+    <span class="add-on"><i class="icon-home"></i></span>
+        <select name="unidade" placeholder="Unidade">
+            {% for u in unidades %}
+                <option value="{{ u.id }}">{{ u.nome }}</option>
+            {% endfor%}
+        </select>
     </div>
     </div>
     </div>

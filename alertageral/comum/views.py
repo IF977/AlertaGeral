@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ï»¿# -*- coding: utf-8 -*-
 import django.shortcuts
 from django.contrib.auth.decorators import permission_required, login_required
 from django.core.mail import EmailMultiAlternatives
@@ -13,8 +13,10 @@ def monta_html(conteudo, tipo):
         html_alerta = 'O seu usuario AlertaGeral eh: %s e a senha eh: %s' %(conteudo[0], conteudo[1])
     elif str(tipo) == 'cadastro':
         html_alerta = 'Cadastro realizado com sucesso, seu usuario AlertaGeral eh: %s e a senha eh: %s' %(conteudo[0], conteudo[1])
+    elif str(tipo) == 'alerta':
+        html_alerta = 'Novo Alerta Cadastrado. Conteudo: %s' %(conteudo[0])
     else:
-        html_alerta = '<html>Teste criação de alerta: <br> Alerta %s criado </html>' %(conteudo)
+        html_alerta = '<html>Teste criaÃ§Ã£o de alerta: <br> Alerta %s criado </html>' %(conteudo)
     return html_alerta
 
 def enviar_email(subject, from_email, to_email, alerta=None, tipo=None):

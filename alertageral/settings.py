@@ -53,6 +53,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'alerta.geralmail@gmail.com'
 EMAIL_HOST_PASSWORD = '@ler123Geral'
 
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 # USE_I18N = True

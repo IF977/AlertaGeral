@@ -7,16 +7,15 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-
 <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/estilos.css" rel="stylesheet">
 
   <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/static/img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="/static/img/favicon.png">
   
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
@@ -27,14 +26,9 @@
 <body bgcolor="#dfeae2">
 
 <!--Banner do topo-->
-<div id="banner"><a href=/> </a><div align="right">
-<a href="/">
-<button class="btn btn-link" type="button">Logout</button>
-</a><a href="/alerta/recupera_senha/">
-<button class="btn btn-link" type="button">Alterar Senha</button>
-</a><a href="/admin/">
-<button class="btn btn-link" type="button">Administração</button>
-</a></div> </div>
+<div id="conteudo_principal">
+	<a href=/><div id="banner"> </div></a>
+</div>
 
 <BR/><BR/><BR/><BR/>
 <br clear="all"/>
@@ -44,43 +38,29 @@
 			<div class="tabbable" id="tabs-362792">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="/alerta/todosalertas" data-toggle="tab" style="font-family: digital_dreamregular"><h6>Todos Alertas</h6></a>
+						<a href="#panel-582106" data-toggle="tab" style="font-family: digital_dreamregular"><h6>Todos Recentes</h6></a>
 					</li>
 					<li>
-						<a href=/alerta/recentes_alertas style=font-family: 'digital_dreamregular'><h6>Alertas Recentes</h6></a>
+						<a href=/alerta/todosalertas style=font-family: 'digital_dreamregular'><h6>Todos Alertas</h6></a>
 					</li>
 				</ul>
 			</div>
 		</div>
+	
 <div class="container" style="background-color:#FFF" id=container>
+
 	<div class="row clearfix" >
-		<div class="col-md-12 column" id="corpo">
-			<!--Imagem botão de realizar alerta-->
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					
-					<a href="/alerta/cadastrar_alerta/"><img class="img-rounded" src="/static/imagem/imagemAlerta.png"><a/>
-				</div>
-			</div>
-			<br clear="all"/>
-			<br clear="all"/>			
-		</div>
-		
-		<!-- Alertas Recentes -->
             {% for a in alertas %}
             <div id="imagem_alertas1">
                 <table>
-			    <form action="/alerta/validar_responder_alerta/{{a.id}}" name="validar_responder_alerta" id="comentarios_form" enctype="multipart/form-data" method="POST">
-					{% csrf_token %}
-					<button class="btn btn-danger" type="submit"> Responder </button>
-				</form>
 				<tr>
 					<td><img alt="{{ a.imagem }}" width=120  height=120 {% ifequal a.imagem "" %}
                     src="/media/imagem/imagemAlerta.png" 
                     {% else %}
                     src="/media/{{ a.imagem }}"
                     {% endifequal %}class="img-circle" ></td>
-					<td width=500 align="right"><blockquote><font color="#FF0000"></font>
+                    <!-- <td><img alt="{{ a.imagem }}" width=120 height=120 src="/media/{{ a.imagem }}" class="img-circle" ></td> -->
+					<td width=500 align="right"><blockquote><font color="#FF0000">Desativar</font>
 						<div class="well well-small"   style="color:black">
 							<p>
 								<a href=alerta/comentarios/{{a.id}} style="color:black">{{ a.texto }}</a>
@@ -92,7 +72,7 @@
 								{% if a.anonimo == True %}
 								    Anônimo
 								{% else %}
-									{{ a.usuario.username }}
+									{{ a.usuario.email }}
 								{% endif %}
 								
 							</small>
@@ -100,10 +80,9 @@
 						</blockquote></td>     
 				</tr>
                 </table>
-				<br>
-				<br>
             </div>	
-            {% endfor %}		
+            {% endfor %}	
+            </div>			
 		
 	</div>
 </div>

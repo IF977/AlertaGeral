@@ -27,7 +27,7 @@
 
 <!--Banner do topo-->
 <div id="conteudo_principal">
-	<a href=index.html><div id="banner"> </div></a> 
+	<a href=/><div id="banner"> </div></a> 
 </div>
 
 <BR/><BR/><BR/><BR/>
@@ -41,7 +41,7 @@
 						<a href="#panel-582106" data-toggle="tab" style="font-family: digital_dreamregular"><h6>Todos Alertas</h6></a>
 					</li>
 					<li>
-						<a href=/ style=font-family: 'digital_dreamregular'><h6>Alertas Recentes</h6></a>
+						<a href=/alerta/recentes_alertas style=font-family: 'digital_dreamregular'><h6>Alertas Recentes</h6></a>
 					</li>
 				</ul>
 			</div>
@@ -53,161 +53,44 @@
 		
 		
 		<!-- Todos Alertas -->
-		<br clear="all"/>
-		<div id="imagem_alertas1">
-		    <table>
+            {% for a in alertas %}
+            <div id="imagem_alertas1">
+                <table>
+			    <form action="/alerta/validar_responder_alerta/{{a.id}}" name="validar_responder_alerta" id="comentarios_form" enctype="multipart/form-data" method="POST">
+					{% csrf_token %}
+					<button class="btn btn-danger" type="submit"> Responder </button>
+				</form>
 				<tr>
-					<td><img alt="140x140" src="http://lorempixel.com/140/140/" class="img-circle" ></td>
-					<td width=500><blockquote>
+					<td><img alt="{{ a.imagem }}" width=120  height=120 {% ifequal a.imagem "" %}
+                    src="/media/imagem/imagemAlerta.png" 
+                    {% else %}
+                    src="/media/{{ a.imagem }}"
+                    {% endifequal %}class="img-circle" ></td>
+                    <!-- <td><img alt="{{ a.imagem }}" width=120 height=120 src="/media/{{ a.imagem }}" class="img-circle" ></td> -->
+					<td width=500 align="right"><blockquote><font color="#FF0000"></font>
 						<div class="well well-small"   style="color:black">
 							<p>
-								<a href=comentarios.html style="color:black">Construção do novo bloco de engenharia atrasado</a>
+								<a href=alerta/comentarios/{{a.id}} style="color:black">{{ a.texto }}</a>
 							</p> 
 							<small>
-								<script language="JavaScript">
-									document.write()
-									var mydate=new Date()
-									var year=mydate.getYear()
-									if (year<2000)
-										year += (year < 1900) ? 1900 : 0
-										var day=mydate.getDay()
-										var month=mydate.getMonth()
-										var daym=mydate.getDate()
-									if (daym<10)
-										daym="0"+daym
-										var montharray=new Array(" de Janeiro de "," de Fevereiro de "," de Março de ","de Abril de ","de Maio de ","de Junho de","de Julho de ","de Agosto de ","de Setembro de "," de Outubro de "," de Novembro de "," de Dezembro de ")
-										document.write("   "+daym+" "+montharray[month]+year+" - ")
-										document.write("</b></i></font>")
-								</script>
-								
-								Carlos Gomes
+                                {{ a.data_criacao }}
+								<br>
+                                <!-- mostrar o nome se nao for anonimo -->
+								{% if a.anonimo == True %}
+								    Anônimo
+								{% else %}
+									{{ a.usuario.username }}
+								{% endif %}
 								
 							</small>
 						</div>
 						</blockquote></td>     
 				</tr>
-			</table>
-		</div>		
-			
-		<div id="imagem_alertas2">
-		    <table>	
-				<tr>
-					<td></td>
-					<td width=500>
-						<blockquote>
-							<div class="well well-small" style="color:black">
-								<p>
-									<a href=comentarios.html style="color:black">Goteiras em sala de aula</a>
-								</p> 
-								
-								<small>
-								<script language="JavaScript">
-									document.write()
-									var mydate=new Date()
-									var year=mydate.getYear()
-									if (year<2000)
-										year += (year < 1900) ? 1900 : 0
-										var day=mydate.getDay()
-										var month=mydate.getMonth()
-										var daym=mydate.getDate()
-									if (daym<10)
-										daym="0"+daym
-										var montharray=new Array(" de Janeiro de "," de Fevereiro de "," de Março de ","de Abril de ","de Maio de ","de Junho de","de Julho de ","de Agosto de ","de Setembro de "," de Outubro de "," de Novembro de "," de Dezembro de ")
-										document.write("   "+daym+" "+montharray[month]+year+" - ")
-										document.write("</b></i></font>")
-								</script>
-								
-								José Mário
-							
-							</small>
-								
-							</div>
-						</blockquote>
-					</td>     
-					<td><img alt="140x140" src="http://lorempixel.com/140/140/" class="img-circle"></td>
-				</tr>
-			</table>
-		</div>	
-		
-		<div id="imagem_alertas1">
-		    <table>
-			
-				<tr>
-					<td><img alt="140x140" src="http://lorempixel.com/140/140/" class="img-circle" ></td>
-					<td width=500><blockquote>
-						<div class="well well-small"  style="color:black">
-							<p>
-								<a href=comentarios.html style="color:black">Comida vencida na cantina da universidade</a>
-							</p> 
-							
-							
-							<small>
-								<script language="JavaScript">
-									document.write()
-									var mydate=new Date()
-									var year=mydate.getYear()
-									if (year<2000)
-										year += (year < 1900) ? 1900 : 0
-										var day=mydate.getDay()
-										var month=mydate.getMonth()
-										var daym=mydate.getDate()
-									if (daym<10)
-										daym="0"+daym
-										var montharray=new Array(" de Janeiro de "," de Fevereiro de "," de Março de ","de Abril de ","de Maio de ","de Junho de","de Julho de ","de Agosto de ","de Setembro de "," de Outubro de "," de Novembro de "," de Dezembro de ")
-										document.write("   "+daym+" "+montharray[month]+year+" - ")
-										document.write("</b></i></font>")
-								</script>
-								
-								Álvaro Prata
-							
-							</small>
-							
-							
-						</div>
-						</blockquote></td>     
-				</tr>
-				</table>
-		</div>		
-			
-		<div id="imagem_alertas2">
-		    <table>	
-				<tr>
-					<td></td>
-					<td width=500>
-						<blockquote>
-							<div class="well well-small" style="color:black">
-								<p>
-									<a href=comentarios.html style="color:black">Comida vencida na cantina da universidade</a>
-								</p> 
-								
-								<small>
-								<script language="JavaScript">
-									document.write()
-									var mydate=new Date()
-									var year=mydate.getYear()
-									if (year<2000)
-										year += (year < 1900) ? 1900 : 0
-										var day=mydate.getDay()
-										var month=mydate.getMonth()
-										var daym=mydate.getDate()
-									if (daym<10)
-										daym="0"+daym
-										var montharray=new Array(" de Janeiro de "," de Fevereiro de "," de Março de ","de Abril de ","de Maio de ","de Junho de","de Julho de ","de Agosto de ","de Setembro de "," de Outubro de "," de Novembro de "," de Dezembro de ")
-										document.write("   "+daym+" "+montharray[month]+year+" - ")
-										document.write("</b></i></font>")
-								</script>
-								
-								Cristiano Silva
-							
-							</small>
-								
-								
-							</div>
-						</blockquote>
-					</td>     
-					<td><img alt="140x140" src="http://lorempixel.com/140/140/" class="img-circle"></td>
-				</tr>
-			</table>
+                </table>
+				<br>
+				<br>
+            </div>	
+            {% endfor %}	
 		</div>			
 		
 	</div>

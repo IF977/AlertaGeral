@@ -11,8 +11,12 @@
   <div id="centro">
   <div id="centroform">
     <br />
+    {% if mensagem %}
+        <h5><font face="Arial, Helvetica, sans-serif" color=red>{{ mensagem }}</font></h5>
+    {% else %}
    <h5><font face="Arial, Helvetica, sans-serif"><b>Esqueceu sua senha?</b>Entre com seu e-mail
-abaixo, que enviaremos ela para sua conta. </font></h1>
+abaixo, que enviaremos ela para sua conta. </font></h5>
+    {% endif %}
     <br />
     <br />
     <div class="control-group">
